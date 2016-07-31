@@ -102,16 +102,12 @@ public class LibraryTest {
         Library library = new Library(books, printStream, dateTimeFormatter);
 
         library.welcome(time);
-
-        // add a verify here
+        
         verify(printStream).println(contains(""));
     }
 
     @Test
     public void shouldDisplayFormattedTimeWhenFormattedTimeIsNotEmpty() {
-
-        // implement me
-        // then move common test variables into a setup method
 
         when(dateTimeFormatter.print(time)).thenReturn("2013-04-08 16:33:17");
 
