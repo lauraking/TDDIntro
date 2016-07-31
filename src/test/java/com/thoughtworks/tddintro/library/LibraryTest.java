@@ -66,7 +66,7 @@ public class LibraryTest {
         Library library = new Library(books, printStream, dateTimeFormatter);
 
         library.listBooks();
-        
+
         verify(printStream).println("Book Title");
         verify(printStream).println("Second Book Title");
     }
@@ -109,6 +109,7 @@ public class LibraryTest {
         library.welcome(time);
 
         // add a verify here
+        verify(printStream).println(contains(""));
     }
 
     @Test
