@@ -2,6 +2,7 @@ package com.thoughtworks.tddintro.library;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormatter;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -11,24 +12,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.Matchers.contains;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class LibraryTest {
 
-
+    List<String> books;
     /*
 
         List books tests. Implement the first three tests for the Verify exercise
 
      */
 
+    @Before
+    public void setUp() {
+        books = new ArrayList<>();
+    }
+
 
     @Test
     public void shouldPrintBookTitleWhenThereIsOneBook() {
 
-        List<String> books = new ArrayList<>();
+
         String title = "Book Title";
         books.add(title);
         PrintStream printStream = mock(PrintStream.class);
@@ -44,7 +48,11 @@ public class LibraryTest {
     @Test
     public void shouldPrintNothingWhenThereAreNoBooks() {
 
-        // implement me
+        PrintStream printStream = mock(PrintStream.class);
+        DateTimeFormatter dateTimeFormatter = mock(DateTimeFormatter.class);
+        Library library = new Library(books, printStream, dateTimeFormatter);
+        library.listBooks();
+        verify(printStream, never()).println();
     }
 
     @Test
