@@ -102,7 +102,7 @@ public class LibraryTest {
         Library library = new Library(books, printStream, dateTimeFormatter);
 
         library.welcome(time);
-        
+
         verify(printStream).println(contains(""));
     }
 
